@@ -14,7 +14,7 @@ using namespace DirectX::SimpleMath;
 using Microsoft::WRL::ComPtr;
 
 static const XMVECTORF32 START_POSITION = { 0.f, -1.5f, 0.f, 0.f };
-static const XMVECTORF32 ROOM_BOUNDS = { 8.f, 6.f, 12.f, 0.f };
+static const XMVECTORF32 ROOM_BOUNDS = { 18.f, 16.f, 42.f, 0.f };
 static const float ROTATION_GAIN = 0.004f;
 static const float MOVEMENT_GAIN = 0.07f;
 
@@ -490,7 +490,7 @@ void Game::CreateResources()
 
 	// TODO: Initialize windows-size dependent objects here.
 
-	m_proj = Matrix::CreatePerspectiveFieldOfView(XMConvertToRadians(70.f), float(backBufferWidth) / float(backBufferHeight), 0.01f, 100.f);
+	m_proj = Matrix::CreatePerspectiveFieldOfView(XMConvertToRadians(60.f), float(backBufferWidth) / float(backBufferHeight), 0.01f, 100.f); 
 
 }
 

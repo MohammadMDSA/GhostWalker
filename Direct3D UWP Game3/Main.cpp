@@ -47,6 +47,7 @@ public:
             ref new EventHandler<Platform::Object^>(this, &ViewProvider::OnResuming);
 
         m_game = std::make_unique<Game>();
+
     }
 
     virtual void Uninitialize()
@@ -118,9 +119,9 @@ public:
         {
             std::swap(outputWidth, outputHeight);
         }
+		
+        m_game->Initialize(reinterpret_cast<IUnknown*>(window), outputWidth, outputHeight, rotation);
 
-        m_game->Initialize(reinterpret_cast<IUnknown*>(window),
-                           outputWidth, outputHeight, rotation );
     }
 
     virtual void Load(Platform::String^ entryPoint)
@@ -292,13 +293,13 @@ protected:
     }
 
 private:
-    bool                    m_exit;
-    bool                    m_visible;
-    bool                    m_in_sizemove;
-    float                   m_DPI;
-    float                   m_logicalWidth;
-    float                   m_logicalHeight;
-    std::unique_ptr<Game>   m_game;
+    bool                        m_exit;
+    bool                        m_visible;
+    bool                        m_in_sizemove;
+    float                       m_DPI;
+    float                       m_logicalWidth;
+    float                       m_logicalHeight;
+    std::unique_ptr<Game>       m_game;
 
     Windows::Graphics::Display::DisplayOrientations	m_nativeOrientation;
     Windows::Graphics::Display::DisplayOrientations	m_currentOrientation;

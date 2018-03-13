@@ -33,4 +33,11 @@
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Direct3D UWP Game3_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

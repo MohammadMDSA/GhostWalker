@@ -13,10 +13,7 @@ using namespace DirectX::SimpleMath;
 
 using Microsoft::WRL::ComPtr;
 
-static const XMVECTORF32 START_POSITION = { 0.f, -1.5f, 0.f, 0.f };
 static const XMVECTORF32 ROOM_BOUNDS = { 18.f, 16.f, 42.f, 0.f };
-static const float ROTATION_GAIN = 0.004f;
-static const float MOVEMENT_GAIN = 0.07f;
 
 Game::Game() :
 	m_window(nullptr),
@@ -25,7 +22,6 @@ Game::Game() :
 	m_outputRotation(DXGI_MODE_ROTATION_IDENTITY),
 	m_featureLevel(D3D_FEATURE_LEVEL_9_1)
 {
-	m_camPos = START_POSITION.v;
 }
 
 // Initialize the Direct3D resources required to run.
@@ -80,8 +76,7 @@ void Game::Update(DX::StepTimer const& timer)
 
 	if (kb.Home)
 	{
-		m_camPos = START_POSITION.v;
-		m_pitch = m_yaw = 0;
+		
 	}
 
 	Vector3 move = Vector3::Zero;
@@ -103,50 +98,17 @@ void Game::Update(DX::StepTimer const& timer)
 
 	if (kb.PageDown || kb.S)
 		move.z -= 1.f;
-
-	Quaternion q = Quaternion::CreateFromYawPitchRoll(m_yaw, -m_pitch, 0.f);
-
-	move = Vector3::Transform(move, q);
-
-	move *= MOVEMENT_GAIN;
-
-	m_camPos += move;
-
-	Vector3 halfBound = (Vector3(ROOM_BOUNDS.v) / Vector3(2.f))
-		- Vector3(0.1f, 0.1f, 0.1f);
-
-	m_camPos = Vector3::Min(m_camPos, halfBound);
-	m_camPos = Vector3::Max(m_camPos, -halfBound);
-
-
-
+	
+	m_camera->MovePosition(move);
 
 
 	auto mouse = m_mouse->GetState();
 
 	if (mouse.positionMode == Mouse::MODE_RELATIVE)
 	{
-		Vector3 delta = Vector3(float(mouse.x), float(mouse.y), 0.f)
-			* ROTATION_GAIN;
+		Vector3 delta = Vector3(float(mouse.x), float(mouse.y), 0.f);
 
-		m_pitch -= delta.y;
-		m_yaw -= delta.x;
-
-		// limit pitch to straight up or straight down
-		// with a little fudge-factor to avoid gimbal lock
-		float limit = XM_PI / 2.0f - 0.01f;
-		m_pitch = std::max(-limit, m_pitch);
-		m_pitch = std::min(+limit, m_pitch);
-
-		// keep longitude in sane range by wrapping
-		if (m_yaw > XM_PI)
-		{
-			m_yaw -= XM_PI * 2.0f;
-		}
-		else if (m_yaw < -XM_PI)
-		{
-			m_yaw += XM_PI * 2.0f;
-		}
+		m_camera->ChangeLookDirection(delta);
 	}
 
 	m_mouse->SetMode(Mouse::MODE_RELATIVE);
@@ -165,14 +127,8 @@ void Game::Render()
 	Clear();
 
 	// TODO: Add your rendering code here.
-	float y = sinf(m_pitch);
-	float r = cosf(m_pitch);
-	float z = r * cosf(m_yaw);
-	float x = r * sinf(m_yaw);
 
-	XMVECTOR lookAt = m_camPos + Vector3(x, y, z);
-
-	XMMATRIX view = XMMatrixLookAtRH(m_camPos, lookAt, Vector3::Up);
+	XMMATRIX view = m_camera->GetViewMatrix();
 
 	m_walls->Draw(Matrix::Identity, view, m_proj);
 
@@ -390,7 +346,7 @@ void Game::CreateDevice()
 	m_walls = GeometricPrimitive::CreateBox(m_d3dContext.Get(), XMFLOAT3(ROOM_BOUNDS[0], ROOM_BOUNDS[1], ROOM_BOUNDS[2]), false, true);
 	m_world = Matrix::Identity;
 
-
+	m_camera = ref new Camera();
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.

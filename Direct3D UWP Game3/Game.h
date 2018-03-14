@@ -12,6 +12,8 @@
 #include <SimpleMath.h>
 #include <GeometricPrimitive.h>
 
+#include "Camera.h"
+
 
 
 // A basic game implementation that creates a D3D11 device and
@@ -68,7 +70,6 @@ private:
 
 	DirectX::SimpleMath::Matrix						m_world;
 	DirectX::SimpleMath::Matrix						m_proj;
-	DirectX::SimpleMath::Vector3					m_camPos;
 
 	std::unique_ptr<DirectX::GeometricPrimitive>	m_walls;
 
@@ -78,6 +79,5 @@ private:
 	std::unique_ptr <DirectX::Keyboard>				m_keyboard;
 	std::unique_ptr<DirectX::Mouse>					m_mouse;
 
-	float											m_pitch;
-	float											m_yaw;
+	Camera^											m_camera;
 };

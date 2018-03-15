@@ -46,13 +46,13 @@ public:
         CoreApplication::Resuming +=
             ref new EventHandler<Platform::Object^>(this, &ViewProvider::OnResuming);
 
-        m_game = std::make_unique<Game>();
+		m_game = ref new Game();
 
     }
 
     virtual void Uninitialize()
     {
-        m_game.reset();
+		//delete m_game;
     }
 
     virtual void SetWindow(CoreWindow^ window)
@@ -166,7 +166,7 @@ protected:
 
         m_DPI = DisplayInformation::GetForCurrentView()->LogicalDpi;
 
-        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::FullScreen;
+        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::PreferredLaunchViewSize;
         // TODO: Change to ApplicationViewWindowingMode::FullScreen to default to full screen
 
         auto desiredSize = Size(ConvertPixelsToDips(w), ConvertPixelsToDips(h));
@@ -299,7 +299,7 @@ private:
     float                       m_DPI;
     float                       m_logicalWidth;
     float                       m_logicalHeight;
-    std::unique_ptr<Game>       m_game;
+    Game^						m_game;
 
     Windows::Graphics::Display::DisplayOrientations	m_nativeOrientation;
     Windows::Graphics::Display::DisplayOrientations	m_currentOrientation;

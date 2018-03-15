@@ -4,6 +4,9 @@
 
 #pragma once
 
+#include "DeviceResource.h"
+#include "Renderer.h"
+
 #include "StepTimer.h"
 
 #include <Keyboard.h>
@@ -14,13 +17,11 @@
 
 #include "Camera.h"
 
-
-
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
-class Game
+ref class Game
 {
-public:
+internal:
 
 	Game();
 
@@ -38,43 +39,33 @@ public:
 	void OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation);
 	void ValidateDevice();
 
+	// Getters
+	Camera^ GetCamera() { return this->m_camera; }
+	DX::StepTimer GetTimer() { return this->m_timer; }
+	//std::vector<GeometricPrimitive*> GetGameObjects() { return this->m_gameObjects; }
+	DirectX::GeometricPrimitive* GetWalls() { return m_walls.get(); }
+
 	// Properties
 	void GetDefaultSize(int& width, int& height) const;
+
+	void OnDeviceLost();
 
 private:
 
 	void Update(DX::StepTimer const& timer);
 	void Render();
 
-	void Clear();
-	void Present();
-
-	void CreateDevice();
-	void CreateResources();
-
-	void OnDeviceLost();
-
-	// Device resources.
-	IUnknown*                                       m_window;
-	int                                             m_outputWidth;
-	int                                             m_outputHeight;
-	DXGI_MODE_ROTATION                              m_outputRotation;
-
-	D3D_FEATURE_LEVEL                               m_featureLevel;
-	Microsoft::WRL::ComPtr<ID3D11Device3>           m_d3dDevice;
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext3>    m_d3dContext;
-
-	Microsoft::WRL::ComPtr<IDXGISwapChain3>         m_swapChain;
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>  m_renderTargetView;
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>  m_depthStencilView;
-
-	DirectX::SimpleMath::Matrix						m_world;
-	DirectX::SimpleMath::Matrix						m_proj;
+	void Load();
 
 	std::unique_ptr<DirectX::GeometricPrimitive>	m_walls;
+	std::vector<DirectX::GeometricPrimitive*>		m_gameObjects;
+
+	// Resources
+	DeviceResource^									m_device;
+	Renderer^										m_renderer;
 
 	// Rendering loop timer.
-	DX::StepTimer                                   m_timer;
+	DX::StepTimer									m_timer;
 
 	std::unique_ptr <DirectX::Keyboard>				m_keyboard;
 	std::unique_ptr<DirectX::Mouse>					m_mouse;

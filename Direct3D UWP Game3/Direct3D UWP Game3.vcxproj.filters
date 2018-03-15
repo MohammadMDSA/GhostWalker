@@ -11,12 +11,16 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="DeviceResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="DeviceResource.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png">

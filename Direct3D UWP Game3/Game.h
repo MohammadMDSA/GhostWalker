@@ -11,7 +11,11 @@
 
 #include <Keyboard.h>
 #include <Mouse.h>
+#include <GamePad.h>
 
+#include <Effects.h>
+#include <Model.h>
+#include <CommonStates.h>
 #include <SimpleMath.h>
 #include <GeometricPrimitive.h>
 
@@ -40,10 +44,13 @@ internal:
 	void ValidateDevice();
 
 	// Getters
-	Camera^ GetCamera() { return this->m_camera; }
-	DX::StepTimer GetTimer() { return this->m_timer; }
-	//std::vector<GeometricPrimitive*> GetGameObjects() { return this->m_gameObjects; }
-	DirectX::GeometricPrimitive* GetWalls() { return m_walls.get(); }
+	Camera^ GetCamera()												{ return this->m_camera; }
+
+	DX::StepTimer GetTimer()										{ return this->m_timer; }
+	std::vector<DirectX::GeometricPrimitive*>* GetGameObjects()		{ return m_gameObjects; }
+	DirectX::GeometricPrimitive* GetWalls()							{ return m_walls.get(); }
+	DirectX::Model* GetModel()										{ return m_model.get(); }
+	DirectX::CommonStates* GetState()								{ return m_states.get(); }
 
 	// Properties
 	void GetDefaultSize(int& width, int& height) const;
@@ -58,7 +65,11 @@ private:
 	void Load();
 
 	std::unique_ptr<DirectX::GeometricPrimitive>	m_walls;
-	std::vector<DirectX::GeometricPrimitive*>		m_gameObjects;
+	std::unique_ptr<DirectX::GeometricPrimitive>	m_ball;
+	std::vector<DirectX::GeometricPrimitive*>*		m_gameObjects;
+
+	std::unique_ptr<DirectX::CommonStates>			m_states;
+	std::unique_ptr<DirectX::Model>					m_model;
 
 	// Resources
 	DeviceResource^									m_device;
@@ -67,8 +78,9 @@ private:
 	// Rendering loop timer.
 	DX::StepTimer									m_timer;
 
-	std::unique_ptr <DirectX::Keyboard>				m_keyboard;
+	std::unique_ptr<DirectX::Keyboard>				m_keyboard;
 	std::unique_ptr<DirectX::Mouse>					m_mouse;
+	std::unique_ptr<DirectX::GamePad>				m_gamePad;
 
 	Camera^											m_camera;
 };

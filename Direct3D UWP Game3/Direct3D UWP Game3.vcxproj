@@ -220,6 +220,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\Senza Titolo 2.sdkmesh" />
     <None Include="Direct3D UWP Game3_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>

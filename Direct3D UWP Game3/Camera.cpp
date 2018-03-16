@@ -4,7 +4,7 @@
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
 
-const XMVECTORF32 Camera::START_POSITION = { 0.f, -1.5f, 0.f, 0.f };
+const XMVECTORF32 Camera::START_POSITION = { -1.f, -0.f, 0.f, 0.f };
 const XMVECTORF32 Camera::ROOM_BOUNDS = { 18.f, 16.f, 42.f, 0.f };
 const float Camera::ROTATION_GAIN = 0.004f;
 const float Camera::MOVEMENT_GAIN = 0.07f;

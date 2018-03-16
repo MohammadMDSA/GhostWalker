@@ -32,7 +32,7 @@ void Game::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATIO
 
 	m_camera = ref new Camera();
 
-	m_gameObjects = std::vector<DirectX::GeometricPrimitive*>();
+	m_gameObjects = new std::vector<DirectX::GeometricPrimitive*>();
 	
 	m_renderer->CreateResource();
 
@@ -41,6 +41,8 @@ void Game::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATIO
 
 	m_mouse = std::make_unique<Mouse>();
 	m_mouse->SetWindow(reinterpret_cast<ABI::Windows::UI::Core::ICoreWindow*>(window));
+
+	m_gamePad = std::make_unique<GamePad>();
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -73,15 +75,23 @@ void Game::Update(DX::StepTimer const& timer)
 	elapsedTime;
 	
 	auto kb = m_keyboard->GetState();
-	if (kb.Escape)
+	auto gamepad = m_gamePad->GetState(0);
+
+	if (kb.Escape || gamepad.IsAPressed())
 		ExitGame();
 
 	if (kb.Home)
 	{
-		
+		m_camera->Reset();
 	}
 
 	Vector3 move = Vector3::Zero;
+
+	if (gamepad.IsConnected())
+	{
+		move.z += gamepad.thumbSticks.leftY;
+		move.x -= gamepad.thumbSticks.leftX;
+	}
 
 	if (kb.Up || kb.Space)
 		move.y += 1.f;
@@ -106,14 +116,23 @@ void Game::Update(DX::StepTimer const& timer)
 
 	auto mouse = m_mouse->GetState();
 
+	Vector3 delta = Vector3();
+
 	if (mouse.positionMode == Mouse::MODE_RELATIVE)
 	{
-		Vector3 delta = Vector3(float(mouse.x), float(mouse.y), 0.f);
+		delta.x = float(mouse.x);
+		delta.y = float(mouse.y);
+	}
+	m_mouse->SetMode(Mouse::MODE_RELATIVE);
 
-		m_camera->ChangeLookDirection(delta);
+	if (gamepad.IsConnected())
+	{
+		delta.x += gamepad.thumbSticks.rightX * 5;
+		delta.y -= gamepad.thumbSticks.rightY * 5;
 	}
 
-	m_mouse->SetMode(Mouse::MODE_RELATIVE);
+	m_camera->ChangeLookDirection(delta);
+
 	//m_mouse->SetMode(mouse.leftButton ? Mouse::MODE_RELATIVE : Mouse::MODE_ABSOLUTE);
 }
 
@@ -127,7 +146,16 @@ void Game::Load()
 {
 	m_walls = GeometricPrimitive::CreateBox(m_device->GetDeviceContext(), XMFLOAT3(ROOM_BOUNDS[0], ROOM_BOUNDS[1], ROOM_BOUNDS[2]), false, true);
 
-	m_gameObjects.push_back(m_walls.get());
+	m_ball = GeometricPrimitive::CreateSphere(m_device->GetDeviceContext());
+
+	m_gameObjects->push_back(m_ball.get());
+
+	m_gameObjects->push_back(m_walls.get());
+
+	m_states = std::make_unique<CommonStates>(m_device->GetDevice());
+	EffectFactory fx(m_device->GetDevice());
+	auto a1 = m_device->GetDevice();
+	m_model = Model::CreateFromSDKMESH(a1, L"Assets\\Senza Titolo 2.sdkmesh", fx);
 
 }
 
@@ -237,7 +265,11 @@ void Game::OnDeviceLost()
 
 	m_walls.reset();
 
+	m_states.reset();
+	m_model.reset();
+
 	m_device->Initialize();
+	Load();
 
 	m_renderer->CreateResource();
 }

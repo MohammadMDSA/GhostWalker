@@ -26,15 +26,15 @@ void Renderer::Render()
 
 	XMMATRIX view = m_game->GetCamera()->GetViewMatrix();
 
-	//auto objects = m_game->GetGameObjects();
+	auto objects = m_game->GetGameObjects();
 
-	/*for (auto object = objects.begin(); object != objects.end(); object++)
+	for (auto object = objects->begin(); object != objects->end(); object++)
 	{
 		(*object)->Draw(Matrix::Identity, view, m_proj);
-	}*/
+	}
 
-
-	m_game->GetWalls()->Draw(Matrix::Identity, view, m_proj);
+	m_game->GetModel()->Draw(m_device->m_d3dContext.Get(), *m_game->GetState(), m_world, view, m_proj);
+	//m_game->GetWalls()->Draw(Matrix::Identity, view, m_proj);
 
 	Present();
 }

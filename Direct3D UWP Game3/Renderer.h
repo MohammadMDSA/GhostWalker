@@ -33,5 +33,9 @@ private:
 
 	Game^											m_game;
 
+#ifdef _DEBUG
+	std::unique_ptr<DirectX::GeometricPrimitive>	m_db;
+
+#endif
 };
 

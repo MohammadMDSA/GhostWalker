@@ -9,6 +9,7 @@ Wheel::Wheel()
 {
 
 	m_world *= DirectX::SimpleMath::Matrix::CreateScale(0.005);
+	m_world *= DirectX::SimpleMath::Matrix::CreateTranslation(0.000f, -1.30f, 0);
 }
 
 void Wheel::Draw(ID3D11DeviceContext3 * deviceContext, DirectX::SimpleMath::Matrix view, DirectX::SimpleMath::Matrix proj)

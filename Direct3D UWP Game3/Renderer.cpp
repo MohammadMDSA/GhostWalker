@@ -40,6 +40,8 @@ void Renderer::Render()
 */
 	auto objectss = m_game->GetGameObjectss();
 
+	m_db->Draw(m_world, view, m_proj);
+
 	for (auto object = objectss->begin(); object != objectss->end(); object++)
 	{
 		(*object)->Draw(m_device->GetDeviceContext(), view, m_proj);
@@ -191,5 +193,9 @@ void Renderer::CreateResource()
 
 	m_proj = Matrix::CreatePerspectiveFieldOfView(XMConvertToRadians(60.f), float(backBufferWidth) / float(backBufferHeight), 0.01f, 100.f);
 	m_world = Matrix::Identity;
+
+#ifdef _DEBUG
+	m_db = DirectX::GeometricPrimitive::CreateSphere(m_device->GetDeviceContext(), 0.01f);
+#endif
 
 }

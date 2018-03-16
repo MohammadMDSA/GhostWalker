@@ -9,7 +9,7 @@ internal:
 	GameObject();
 
 	// Inherited via IDrawable
-	virtual void Draw(ID3D11DeviceContext3* deviceContext, Matrix view, Matrix proj) = 0;
+	virtual void Draw(ID3D11DeviceContext3* deviceContext, DirectX::SimpleMath::Matrix view, DirectX::SimpleMath::Matrix proj) = 0;
 	virtual void Update(DX::StepTimer const& timer) = 0;
 	virtual void CreateResource(ID3D11DeviceContext3* deviceContext, DirectX::XMFLOAT3& size, bool rhcoords = true, bool invertn = false) = 0;
 

@@ -16,9 +16,11 @@ void Sphere::Draw(ID3D11DeviceContext3* deviceContext, SimpleMath::Matrix view, 
 void Sphere::Update(DX::StepTimer const& timer)
 {
 	m_position += m_velocity;
+
+	m_world *= Matrix::CreateTranslation(m_velocity);
 }
 
-void Sphere::CreateResource(ID3D11DeviceContext3 * deviceContext, DirectX::XMFLOAT3& size, bool rhcoords = true, bool invertn = false)
+void Sphere::CreateResource(ID3D11DeviceContext3 * deviceContext, DirectX::XMFLOAT3& size, bool rhcoords, bool invertn)
 {
 	m_shape = DirectX::GeometricPrimitive::CreateSphere(deviceContext, 1.f, 16, rhcoords, invertn);
 }

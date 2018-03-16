@@ -32,7 +32,10 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Sphere.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -50,7 +53,10 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Sphere.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Walls.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png">

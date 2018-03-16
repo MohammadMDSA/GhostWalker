@@ -31,8 +31,8 @@ private:
 	// Device resources
 
 	IUnknown*										m_window;
-	int                                             m_outputWidth;
-	int                                             m_outputHeight;
+	int												m_outputWidth;
+	int												m_outputHeight;
 	DXGI_MODE_ROTATION                              m_outputRotation;
 
 	D3D_FEATURE_LEVEL                               m_featureLevel;

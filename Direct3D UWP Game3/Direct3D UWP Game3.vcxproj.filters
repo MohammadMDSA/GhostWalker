@@ -32,14 +32,12 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="IDrawable.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -52,7 +50,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="IUpdatable.h" />
+    <ClInclude Include="Sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png">

@@ -3,21 +3,22 @@
 #include <SimpleMath.h>
 
 #include "IDrawable.h"
+#include "IUpdatable.h"
 
-ref class GameObject abstract : public IDrawable
+ref class GameObject abstract
 {
-public:
+internal:
 	GameObject();
 
 	// Inherited via IDrawable
 	virtual void Draw(ID3D11DeviceContext3 deviceContext) = 0;
-	virtual
+	virtual void Update(DX::StepTimer timer) = 0;
 
-private:
-	Matrix						m_view;
+protected:
+	DirectX::SimpleMath::Matrix							m_view;
 
-	Vector3						m_position;
-	Vector3						m_velocity;
+	DirectX::SimpleMath::Vector3						m_position;
+	DirectX::SimpleMath::Vector3						m_velocity;
 
 };
 

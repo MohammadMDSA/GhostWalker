@@ -15,6 +15,7 @@ void Sphere::Draw(ID3D11DeviceContext3* deviceContext, SimpleMath::Matrix view, 
 
 void Sphere::Update(DX::StepTimer const& timer)
 {
+	m_position += m_velocity;
 }
 
 void Sphere::CreateResource(ID3D11DeviceContext3 * deviceContext, DirectX::XMFLOAT3& size, bool rhcoords = true, bool invertn = false)

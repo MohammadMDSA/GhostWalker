@@ -22,7 +22,6 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Renderer.cpp">
       <Filter>Render</Filter>
     </ClCompile>
@@ -41,11 +40,13 @@
     <ClCompile Include="Wheel.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="Renderer.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -66,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Wheel.h">
       <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

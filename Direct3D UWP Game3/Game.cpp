@@ -73,6 +73,8 @@ void Game::Update(DX::StepTimer const& timer)
 
 	// TODO: Add your game logic here.
 	elapsedTime;
+
+
 	
 	auto kb = m_keyboard->GetState();
 	auto gamepad = m_gamePad->GetState(0);
@@ -133,7 +135,6 @@ void Game::Update(DX::StepTimer const& timer)
 
 	m_camera->ChangeLookDirection(delta);
 
-	//m_mouse->SetMode(mouse.leftButton ? Mouse::MODE_RELATIVE : Mouse::MODE_ABSOLUTE);
 }
 
 // Draws the scene.
@@ -148,14 +149,14 @@ void Game::Load()
 
 	m_ball = GeometricPrimitive::CreateSphere(m_device->GetDeviceContext());
 
-	m_gameObjects->push_back(m_ball.get());
+	//m_gameObjects->push_back(m_ball.get());
 
 	m_gameObjects->push_back(m_walls.get());
 
 	m_states = std::make_unique<CommonStates>(m_device->GetDevice());
 	EffectFactory fx(m_device->GetDevice());
 	auto a1 = m_device->GetDevice();
-	m_model = Model::CreateFromSDKMESH(a1, L"Assets\\Senza Titolo 2.sdkmesh", fx);
+	m_model = Model::CreateFromSDKMESH(a1, L"Senza Titolo 2.sdkmesh", fx);
 
 }
 

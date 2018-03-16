@@ -39,9 +39,9 @@ void Camera::MovePosition(DirectX::SimpleMath::Vector3 move)
 
 	Vector3 halfBound = (Vector3(ROOM_BOUNDS.v) / Vector3(2.f))
 		- Vector3(0.1f, 0.1f, 0.1f);
-
+/*
 	m_camPos = Vector3::Min(m_camPos, halfBound);
-	m_camPos = Vector3::Max(m_camPos, -halfBound);
+	m_camPos = Vector3::Max(m_camPos, -halfBound);*/
 }
 
 void Camera::ChangeLookDirection(DirectX::SimpleMath::Vector3 direction)

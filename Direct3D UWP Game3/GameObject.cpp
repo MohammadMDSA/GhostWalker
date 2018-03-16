@@ -7,4 +7,5 @@ using namespace DirectX::SimpleMath;
 
 GameObject::GameObject()
 {
+	m_world = Matrix::Identity;
 }

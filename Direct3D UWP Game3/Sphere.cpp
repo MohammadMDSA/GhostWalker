@@ -20,7 +20,7 @@ void Sphere::Update(DX::StepTimer const& timer)
 	m_world *= Matrix::CreateTranslation(m_velocity);
 }
 
-void Sphere::CreateResource(ID3D11DeviceContext3 * deviceContext, DirectX::XMFLOAT3& size, bool rhcoords, bool invertn)
+void Sphere::CreateResource(DeviceResource^ device, DirectX::XMFLOAT3& size, bool rhcoords, bool invertn)
 {
-	m_shape = DirectX::GeometricPrimitive::CreateSphere(deviceContext, 1.f, 16, rhcoords, invertn);
+	m_shape = DirectX::GeometricPrimitive::CreateSphere(device->GetDeviceContext(), 1.f, 16, rhcoords, invertn);
 }

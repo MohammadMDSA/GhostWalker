@@ -202,7 +202,8 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="StepTimer.h" />
-    <ClInclude Include="Walls.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Wheel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -220,7 +221,8 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Walls.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

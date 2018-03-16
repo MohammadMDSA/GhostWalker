@@ -33,10 +33,18 @@ void Renderer::Render()
 		(*object)->Draw(Matrix::Identity, view, m_proj);
 	}
 
-	auto a = Matrix::CreateScale(0.005);
+	/*auto a = Matrix::CreateScale(0.005);
 
 	m_game->GetModel()->Draw(m_device->m_d3dContext.Get(), *m_game->GetState(), m_world * a, view, m_proj);
-	//m_game->GetWalls()->Draw(Matrix::Identity, view, m_proj);
+
+*/
+	auto objectss = m_game->GetGameObjectss();
+
+	for (auto object = objectss->begin(); object != objectss->end(); object++)
+	{
+		(*object)->Draw(m_device->GetDeviceContext(), view, m_proj);
+	}
+
 
 	Present();
 }

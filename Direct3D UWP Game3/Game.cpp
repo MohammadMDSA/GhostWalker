@@ -33,6 +33,7 @@ void Game::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATIO
 	m_camera = ref new Camera();
 
 	m_gameObjects = new std::vector<DirectX::GeometricPrimitive*>();
+	m_gameObjectss = new std::vector<GameObject^>();
 	
 	m_renderer->CreateResource();
 
@@ -43,6 +44,31 @@ void Game::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATIO
 	m_mouse->SetWindow(reinterpret_cast<ABI::Windows::UI::Core::ICoreWindow*>(window));
 
 	m_gamePad = std::make_unique<GamePad>();
+
+
+
+
+
+
+
+
+
+	m_gameObjectss->push_back(
+		ref new Wall()
+	);
+
+	m_gameObjectss->push_back(
+		ref new Wheel()
+	);
+
+
+
+
+
+
+
+
+
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -135,6 +161,11 @@ void Game::Update(DX::StepTimer const& timer)
 
 	m_camera->ChangeLookDirection(delta);
 
+	// Updating game objects
+	for (auto  object = m_gameObjectss->begin(); object != m_gameObjectss->end(); object++)
+	{
+		(*object)->Update(timer);
+	}
 }
 
 // Draws the scene.
@@ -145,13 +176,22 @@ void Game::Render()
 
 void Game::Load()
 {
+
+
+	for (auto object = m_gameObjectss->begin(); object != m_gameObjectss->end(); object++)
+	{
+		(*object)->CreateResource(m_device, XMFLOAT3(0, 0, 0));
+	}
+
+
+
 	m_walls = GeometricPrimitive::CreateBox(m_device->GetDeviceContext(), XMFLOAT3(ROOM_BOUNDS[0], ROOM_BOUNDS[1], ROOM_BOUNDS[2]), false, true);
 
 	m_ball = GeometricPrimitive::CreateSphere(m_device->GetDeviceContext());
 
 	//m_gameObjects->push_back(m_ball.get());
 
-	m_gameObjects->push_back(m_walls.get());
+	//m_gameObjects->push_back(m_walls.get());
 
 	m_states = std::make_unique<CommonStates>(m_device->GetDevice());
 	EffectFactory fx(m_device->GetDevice());
@@ -263,6 +303,12 @@ void Game::OnDeviceLost()
 	// TODO: Add Direct3D resource cleanup here.
 
 	m_device->OnDeviceLost();
+
+	// Resetting game objects
+	for (auto object = m_gameObjectss->begin(); object != m_gameObjectss->end(); object++)
+	{
+		(*object)->OnDeviceLost();
+	}
 
 	m_walls.reset();
 

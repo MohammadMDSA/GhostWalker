@@ -14,6 +14,7 @@ internal:
 	virtual void Draw(ID3D11DeviceContext3* deviceContext, DirectX::SimpleMath::Matrix view, DirectX::SimpleMath::Matrix proj) = 0;
 	virtual void Update(DX::StepTimer const& timer) = 0;
 	virtual void CreateResource(DeviceResource^ device, DirectX::XMFLOAT3& size, bool rhcoords = true, bool invertn = false) = 0;
+	virtual void OnDeviceLost() = 0;
 
 protected private:
 	DirectX::SimpleMath::Matrix							m_world;

@@ -6,6 +6,10 @@
 
 #include "DeviceResource.h"
 #include "Renderer.h"
+#include "GameObject.h"
+#include "Wall.h"
+#include "Sphere.h"
+#include "Wheel.h"
 
 #include "StepTimer.h"
 
@@ -48,6 +52,7 @@ internal:
 
 	DX::StepTimer GetTimer()										{ return this->m_timer; }
 	std::vector<DirectX::GeometricPrimitive*>* GetGameObjects()		{ return m_gameObjects; }
+	std::vector<GameObject^>* GetGameObjectss()						{ return m_gameObjectss; }
 	DirectX::GeometricPrimitive* GetWalls()							{ return m_walls.get(); }
 	DirectX::Model* GetModel()										{ return m_model.get(); }
 	DirectX::CommonStates* GetState()								{ return m_states.get(); }
@@ -67,6 +72,7 @@ private:
 	std::unique_ptr<DirectX::GeometricPrimitive>	m_walls;
 	std::unique_ptr<DirectX::GeometricPrimitive>	m_ball;
 	std::vector<DirectX::GeometricPrimitive*>*		m_gameObjects;
+	std::vector<GameObject^>*						m_gameObjectss;
 
 	std::unique_ptr<DirectX::CommonStates>			m_states;
 	std::unique_ptr<DirectX::Model>					m_model;

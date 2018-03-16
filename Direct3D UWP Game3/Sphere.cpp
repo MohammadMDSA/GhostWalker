@@ -24,3 +24,8 @@ void Sphere::CreateResource(DeviceResource^ device, DirectX::XMFLOAT3& size, boo
 {
 	m_shape = DirectX::GeometricPrimitive::CreateSphere(device->GetDeviceContext(), 1.f, 16, rhcoords, invertn);
 }
+
+void Sphere::OnDeviceLost()
+{
+	m_shape.reset();
+}

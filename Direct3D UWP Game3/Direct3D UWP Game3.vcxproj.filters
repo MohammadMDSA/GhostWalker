@@ -38,7 +38,9 @@
     <ClCompile Include="Wall.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Wheel.cpp" />
+    <ClCompile Include="Wheel.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -62,7 +64,9 @@
     <ClInclude Include="Wall.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Wheel.h" />
+    <ClInclude Include="Wheel.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png">

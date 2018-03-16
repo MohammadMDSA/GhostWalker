@@ -23,5 +23,10 @@ void Wall::Update(DX::StepTimer const & timer)
 
 void Wall::CreateResource(DeviceResource^ device, DirectX::XMFLOAT3 & size, bool rhcoords, bool invertn)
 {
-	GeometricPrimitive::CreateBox(device->GetDeviceContext(), XMFLOAT3(ROOM_BOUNDS[0], ROOM_BOUNDS[1], ROOM_BOUNDS[2]), false, true);
+	m_shape = GeometricPrimitive::CreateBox(device->GetDeviceContext(), XMFLOAT3(ROOM_BOUNDS[0], ROOM_BOUNDS[1], ROOM_BOUNDS[2]), false, true);
+}
+
+void Wall::OnDeviceLost()
+{
+	m_shape.reset();
 }

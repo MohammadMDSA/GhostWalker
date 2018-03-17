@@ -22,5 +22,7 @@ protected private:
 	DirectX::SimpleMath::Vector3						m_position;
 	DirectX::SimpleMath::Vector3						m_velocity;
 
+	DirectX::SimpleMath::Vector3						m_size;
+
 };
 

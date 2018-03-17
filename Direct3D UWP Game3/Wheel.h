@@ -20,6 +20,8 @@ internal:
 
 private:
 
+	static const float						CONST_SCALE;
+
 	std::unique_ptr<DirectX::Model>			m_model;
 	std::unique_ptr<DirectX::CommonStates>	m_states;
 };

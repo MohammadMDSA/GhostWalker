@@ -98,5 +98,6 @@
     <None Include="Assets\Senza Titolo 2.sdkmesh">
       <Filter>Assets</Filter>
     </None>
+    <None Include="Senza Titolo 2.sdkmesh" />
   </ItemGroup>
 </Project>

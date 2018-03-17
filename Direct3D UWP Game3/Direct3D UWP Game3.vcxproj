@@ -231,6 +231,7 @@
     <None Include="Assets\Senza Titolo 2.sdkmesh" />
     <None Include="Direct3D UWP Game3_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Senza Titolo 2.sdkmesh" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png" />

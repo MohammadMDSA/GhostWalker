@@ -166,7 +166,7 @@ protected:
 
         m_DPI = DisplayInformation::GetForCurrentView()->LogicalDpi;
 
-        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::FullScreen;
+        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::PreferredLaunchViewSize;
         // TODO: Change to ApplicationViewWindowingMode::FullScreen to default to full screen
 
         auto desiredSize = Size(ConvertPixelsToDips(w), ConvertPixelsToDips(h));
@@ -181,7 +181,7 @@ protected:
 
         CoreWindow::GetForCurrentThread()->Activate();
 
-        view->FullScreenSystemOverlayMode = FullScreenSystemOverlayMode::Minimal;
+        view->FullScreenSystemOverlayMode = FullScreenSystemOverlayMode::Standard;
 
         view->TryResizeView(desiredSize);
     }

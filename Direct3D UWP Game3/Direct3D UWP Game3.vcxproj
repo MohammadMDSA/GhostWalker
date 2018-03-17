@@ -177,6 +177,11 @@
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <LanguageStandard>
+      </LanguageStandard>
+      <EnableModules>
+      </EnableModules>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -228,13 +233,28 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Assets\Senza Titolo 2.sdkmesh" />
+    <None Include="Assets\Plane\F-15C_Eagle.cmo" />
+    <None Include="Assets\Plane\F15C.pz3" />
     <None Include="Direct3D UWP Game3_TemporaryKey.pfx" />
     <None Include="packages.config" />
-    <None Include="Senza Titolo 2.sdkmesh" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-200.png" />
+    <Image Include="Assets\Plane\Body 1.png" />
+    <Image Include="Assets\Plane\Body 2.png" />
+    <Image Include="Assets\Plane\Body 3.png" />
+    <Image Include="Assets\Plane\Body 4.png" />
+    <Image Include="Assets\Plane\Body 5.png" />
+    <Image Include="Assets\Plane\Body 6.png" />
+    <Image Include="Assets\Plane\F15C.jpg" />
+    <Image Include="Assets\Plane\Glass.png" />
+    <Image Include="Assets\Plane\intpanel.png" />
+    <Image Include="Assets\Plane\panel.png" />
+    <Image Include="Assets\Plane\panel1.png" />
+    <Image Include="Assets\Plane\panel2.png" />
+    <Image Include="Assets\Plane\Parts 1.png" />
+    <Image Include="Assets\Plane\pilot.png" />
+    <Image Include="Assets\Plane\weapons.png" />
     <Image Include="Assets\SmallLogo.scale-200.png" />
     <Image Include="Assets\SplashScreen.scale-200.png" />
     <Image Include="Assets\StoreLogo.png" />

@@ -4,7 +4,7 @@
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
 
-const float Wheel::CONST_SCALE =  0.005f;
+const float Wheel::CONST_SCALE =  0.5f;
 
 Wheel::Wheel()
 {
@@ -31,7 +31,10 @@ void Wheel::CreateResource(DeviceResource^ device, DirectX::XMFLOAT3 & size, boo
 {
 	m_states = std::make_unique<CommonStates>(device->GetDevice());
 	EffectFactory fx(device->GetDevice());
-	m_model = Model::CreateFromSDKMESH(device->GetDevice(), L"Senza Titolo 2.sdkmesh", fx);
+	//m_model = Model::CreateFromSDKMESH(device->GetDevice(), L"Senza Titolo 2.sdkmesh", fx);
+	//m_model = Model::CreateFromSDKMESH(device->GetDevice(), L"F-15C_Eagle.sdkmesh", fx);
+	m_model = Model::CreateFromCMO(device->GetDevice(), L"F-15C_Eagle.cmo", fx);
+
 
 	auto objs = m_model->meshes;
 	for (auto obj = objs.begin(); obj != objs.end(); obj++)

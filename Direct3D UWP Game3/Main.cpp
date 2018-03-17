@@ -166,7 +166,7 @@ protected:
 
         m_DPI = DisplayInformation::GetForCurrentView()->LogicalDpi;
 
-        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::PreferredLaunchViewSize;
+        ApplicationView::PreferredLaunchWindowingMode = ApplicationViewWindowingMode::FullScreen;
         // TODO: Change to ApplicationViewWindowingMode::FullScreen to default to full screen
 
         auto desiredSize = Size(ConvertPixelsToDips(w), ConvertPixelsToDips(h));

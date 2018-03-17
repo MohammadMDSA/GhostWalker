@@ -40,7 +40,10 @@ void Renderer::Render()
 */
 	auto objectss = m_game->GetGameObjectss();
 
+
+#ifdef _DEBUG
 	m_db->Draw(m_world, view, m_proj);
+#endif
 
 	for (auto object = objectss->begin(); object != objectss->end(); object++)
 	{

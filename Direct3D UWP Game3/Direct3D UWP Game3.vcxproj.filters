@@ -17,6 +17,12 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{10e32c48-7cd2-4e77-93f1-449639d9b062}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Wheel">
+      <UniqueIdentifier>{5a882444-d6c9-4962-b3aa-6584293cab8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Plane">
+      <UniqueIdentifier>{b0254997-fa85-4248-8304-0d26636b2274}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -88,6 +94,51 @@
     <Image Include="Assets\WideLogo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\Plane\Body 1.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Body 2.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Body 3.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Body 4.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Body 5.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Body 6.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\F15C.jpg">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Glass.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\intpanel.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\panel.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\panel1.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\panel2.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\Parts 1.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\pilot.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
+    <Image Include="Assets\Plane\weapons.png">
+      <Filter>Assets\Plane</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -95,9 +146,11 @@
   <ItemGroup>
     <None Include="Direct3D UWP Game3_TemporaryKey.pfx" />
     <None Include="packages.config" />
-    <None Include="Assets\Senza Titolo 2.sdkmesh">
-      <Filter>Assets</Filter>
+    <None Include="Assets\Plane\F15C.pz3">
+      <Filter>Assets\Plane</Filter>
     </None>
-    <None Include="Senza Titolo 2.sdkmesh" />
+    <None Include="Assets\Plane\F-15C_Eagle.cmo">
+      <Filter>Assets\Plane</Filter>
+    </None>
   </ItemGroup>
 </Project>
